@@ -21,11 +21,6 @@ cmp.setup({
         border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
     },
     min_length = 0,
-    mapping = {
-        mapping = {
-            ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        },
-    },
     sources = {
         { name = 'cmp_tabnine' },
         { name = 'nvim_lsp' },
