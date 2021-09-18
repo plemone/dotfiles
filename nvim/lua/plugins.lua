@@ -14,6 +14,7 @@ return require('packer').startup(function()
     use({
         'tanvirtin/vgit.nvim',
         event = 'BufWinEnter',
+        branch = 'develop',
         requires = {
             'nvim-lua/plenary.nvim',
         },
