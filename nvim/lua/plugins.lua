@@ -11,14 +11,42 @@ end
 
 return require('packer').startup(function()
     local use = use
-    use('tanvirtin/vgit.nvim')
-    use('nvim-lua/popup.nvim')
+    use({
+        'tanvirtin/vgit.nvim',
+        branch = 'develop',
+        event = 'BufWinEnter',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require('config.git')
+        end,
+    })
+    use({
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
+        },
+        config = function()
+            require('config.telescope')
+        end,
+        cmd = { 'Telescope' },
+    })
+    use({
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/cmp-buffer',
+        },
+        config = function()
+            require('config.autocomplete')
+        end,
+    })
     use('tpope/vim-commentary')
     use('neovim/nvim-lspconfig')
-    use('nvim-lua/plenary.nvim')
     use('tanvirtin/monokai.nvim')
     use('kabouzeid/nvim-lspinstall')
-    use('nvim-telescope/telescope.nvim')
     use('kyazdani42/nvim-web-devicons')
     use('kyazdani42/nvim-tree.lua')
     use('kosayoda/nvim-lightbulb')
@@ -28,7 +56,6 @@ return require('packer').startup(function()
     use('JoosepAlviste/nvim-ts-context-commentstring')
     use({ 'wbthomason/packer.nvim', opt = true })
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-    use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
     use('numtostr/FTerm.nvim')
     use('morhetz/gruvbox')
     use('kevinhwang91/nvim-bqf')
@@ -39,13 +66,5 @@ return require('packer').startup(function()
     use('phaazon/hop.nvim')
     use('akinsho/nvim-toggleterm.lua')
     use('dstein64/vim-startuptime')
-    use('karb94/neoscroll.nvim')
-    use({
-        'hrsh7th/nvim-cmp',
-        requires = {
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/cmp-buffer',
-        },
-    })
     use('onsails/lspkind-nvim')
 end)

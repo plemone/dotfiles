@@ -1,4 +1,3 @@
-local telescope = require('telescope')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 
@@ -80,24 +79,4 @@ require('telescope').setup({
         grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
         qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = true,
-            override_file_sorter = true,
-        },
-        fzf_writer = {
-            use_highlighter = false,
-            minimum_grep_characters = 6,
-        },
-        hop = {
-            keys = { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';' },
-            sign_hl = { 'WarningMsg', 'Title' },
-            line_hl = { 'CursorLine', 'Normal' },
-            clear_selection_hl = false,
-            trace_entry = true,
-            reset_selection = true,
-        },
-    },
 })
-
-telescope.load_extension('fzf')
