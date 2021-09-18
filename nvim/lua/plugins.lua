@@ -13,8 +13,7 @@ return require('packer').startup(function()
     local use = use
     use({
         'tanvirtin/vgit.nvim',
-        branch = 'develop',
-        event = 'BufWinEnter',
+        cmd = 'VGit',
         requires = {
             'nvim-lua/plenary.nvim',
         },
